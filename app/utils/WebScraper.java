@@ -37,7 +37,7 @@ public class WebScraper {
 
         Document doc = Jsoup.parse(resp.getString());
         String word = doc.select("dt").text();
-        String desc = doc.select("p").first().html();
+        String desc = doc.select("p").first().text();
         String seeAlso = doc.select("span.glossary-related").html();
         result.put("desc", desc);
         result.put("word", word);
