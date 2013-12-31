@@ -7,7 +7,14 @@
 
     <div class="objectForm">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
-        #{crud.form /}
+        #{crud.form}
+            #{crud.custom 'content'}
+                <label for="content">
+                    &{'content'}
+                </label>
+                <textarea cols="96" rows="20" name="${fieldName}"></textarea>
+            #{/crud.custom}
+        #{/crud.form}
         <p class="crudButtons">
             <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
             <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
