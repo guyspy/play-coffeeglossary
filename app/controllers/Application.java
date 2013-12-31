@@ -13,7 +13,8 @@ import utils.*;
 public class Application extends Controller {
 
     public static void index() {
-        for (int i = 231; i <= 744; i++ ) {
+    	
+        /*for (int i = 231; i <= 744; i++ ) {
         	Map termMap = WebScraper.scrap("http://www.coffeeshrub.com/shrub/glossary/term/"+i);
         	//Logger.info("result="+termMap);
         	
@@ -29,7 +30,7 @@ public class Application extends Controller {
         		Logger.info("word "+word+" is saved.");
         	}
         	
-        }
+        }*/
         
     }
 
