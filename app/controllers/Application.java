@@ -9,11 +9,11 @@ import java.util.*;
 import models.*;
 import utils.*;
 
-@With(Secure.class)
+@With({Secure.class, Intrcp_Logger.class})
 public class Application extends Controller {
 
     public static void index() {
-    	
+
         /*for (int i = 231; i <= 744; i++ ) {
         	Map termMap = WebScraper.scrap("http://www.coffeeshrub.com/shrub/glossary/term/"+i);
         	//Logger.info("result="+termMap);
@@ -31,6 +31,7 @@ public class Application extends Controller {
         	}
         	
         }*/
+        render();
         
     }
 
@@ -38,6 +39,19 @@ public class Application extends Controller {
     	Term term = Term.find("byShrubId", shrubId).first();
     	notFoundIfNull(term);
     	render(term);
+    }
+
+    public static void wordlist(){
+    	List<Map> result = new ArrayList<Map>();
+    	List<Term> all = Term.findAll();
+    	for (Term t : all ) {
+    		Map m = new HashMap();
+    		m.put("word", t.word);
+    		m.put("word_zh", t.word_zh);
+    		m.put("shrubId", t.shrubId);
+    		result.add(m);
+    	}
+    	renderJSON(result);
     }
 
 }
