@@ -14,6 +14,8 @@ public class Term extends Model {
   @Unique
   public String word;
 
+  public String word_zh;
+
   public long shrubId; //term id on coffeeshrub website
 
   @Lob
