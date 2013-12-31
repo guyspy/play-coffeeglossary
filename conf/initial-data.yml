@@ -1,8 +1,3 @@
-User(superAdmin1):
-    email:              aotter@aotter.net
-    password:           8ffa7b5f86294f0b3b4e20aebb07938e482f68a6 #work19gk3
-    isAdmin:            true
-
 User(jeff):
     email:              jeff31303@gmail.com
     password:           edb2f995e224b08c9e482117a77cefd5f0f8f63c #jeffmaster
