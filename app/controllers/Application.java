@@ -41,7 +41,14 @@ public class Application extends Controller {
         String startLetterLow = startLetter.toLowerCase();
         String startLetterUp = startLetter.toUpperCase();
         List<Term> results = Term.find("word like ? or word like ?", startLetterLow+"%", startLetterUp+"%").fetch();
-        render(startLetter, results);
+        String query = startLetter;
+        render(query, results);
+    }
+
+    public static void tag(String tag){
+        List<Term> results = Term.find("select distinct t from Term t join t.tags as tg where tg.name = ? ",tag).fetch();
+        String query = tag;
+        renderTemplate("Application/list.html", results, query);
     }
 
 

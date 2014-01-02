@@ -28,6 +28,13 @@
 <div class="row">
   	<div class="col-md-12">
 
+      <p>
+        Categories: 
+        #{list items:term.tags, as:'t'}
+        <a href="@{Application.tag(t)}">${t}</a>#{if t_index != term.tags?.size()},#{/if}
+        #{/list}
+      </p>
+
   		<p>${term.seeAlso.raw()}</p>
 
   	</div>

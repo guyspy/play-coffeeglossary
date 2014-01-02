@@ -16,6 +16,9 @@ public class Term extends Model {
 
   public String word_zh;
 
+  @ManyToMany(cascade=CascadeType.PERSIST)
+  public Set<Tag> tags;
+  
   public long shrubId; //term id on coffeeshrub website
 
   @Lob
