@@ -22,7 +22,7 @@
 
   		<div>
   			#{list items:models.Tag.findAll(), as:'t'}
-  			<span><a href="@{Application.tag(t)}">&nbsp;${t}&nbsp;</a></span>
+  			<span><a href="@{Application.tag(t.name)}">&nbsp;${t.name} (${t.name_zh})&nbsp;</a></span>#{if t_index != models.Tag.count()}, #{/if}
   			#{/list}
   		</div>
   			

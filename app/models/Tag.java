@@ -12,6 +12,8 @@ public class Tag extends Model implements Comparable<Tag> {
  
     @Required
     public String name;
+
+    public String name_zh;
     
     private Tag(String name) {
         this.name = name;
