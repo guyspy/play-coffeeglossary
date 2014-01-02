@@ -46,9 +46,11 @@ public class Application extends Controller {
     }
 
     public static void tag(String tag){
-        List<Term> results = Term.find("select distinct t from Term t join t.tags as tg where tg.name = ? ",tag).fetch();
+        Tag t = Tag.find("byName", tag).first();
+        List<Term> results = Term.find("select distinct t from Term t join t.tags as tg where tg = ? ",t).fetch();
         String query = tag;
-        renderTemplate("Application/list.html", results, query);
+        String tagNameZh = t.name_zh;
+        renderTemplate("Application/list.html", results, query, tagNameZh);
     }
 
 
