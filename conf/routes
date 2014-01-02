@@ -8,7 +8,8 @@
 # Home page
 GET     /                                       Application.index
 GET     /shrub/glossary/term/{shrubId}/?		Application.term
-	
+GET     /list/{startLetter}/?					Application.list
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
