@@ -4,6 +4,7 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.3/amelia/bootstrap.min.css" rel="stylesheet">
@@ -46,6 +47,16 @@
 
             <!-- Begin page content -->
             <div class="container container-main">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="/public/images/bg1.jpg" alt="...">
+                    </div>
+                  </div>
+                  
+                </div>
                 #{doLayout /}
             </div>
         </div>
@@ -66,15 +77,16 @@
 (function($){
 
 
+
     $('#project').autocomplete({
       minLength: 0,
       source: '@{Application.wordlist()}',
       focus: function( event, ui ) {
-        $( "#project" ).val( ui.item.word );
+        $( "#project" ).val( ui.item.label );
         return false;
       },
       select: function( event, ui ) {
-        $( "#project" ).val( ui.item.word );
+        $( "#project" ).val( ui.item.label );
         
  
         return false;

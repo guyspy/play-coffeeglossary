@@ -13,26 +13,7 @@ import utils.*;
 public class Application extends Controller {
 
     public static void index() {
-
-        /*for (int i = 231; i <= 744; i++ ) {
-        	Map termMap = WebScraper.scrap("http://www.coffeeshrub.com/shrub/glossary/term/"+i);
-        	//Logger.info("result="+termMap);
-        	
-        	String word = (String)termMap.get("word");
-        	Term term = Term.find("byWord", word).first();
-        	if (term == null) {
-        		term = new Term();
-        		term.word = word;
-        		term.shrubId = i;
-        		term.content = (String)termMap.get("desc");
-        		term.seeAlso = (String)termMap.get("seeAlso");
-        		term.save();
-        		Logger.info("word "+word+" is saved.");
-        	}
-        	
-        }*/
         render();
-        
     }
 
     public static void term(long shrubId){
@@ -41,11 +22,13 @@ public class Application extends Controller {
     	render(term);
     }
 
-    public static void wordlist(){
+    public static void wordlist(String term){
+    	List<Term> all = Term.find("word like ? ", "%"+term+"%").fetch();
     	List<Map> result = new ArrayList<Map>();
-    	List<Term> all = Term.findAll();
     	for (Term t : all ) {
     		Map m = new HashMap();
+    		m.put("label", t.word);
+    		m.put("value", t.word);
     		m.put("word", t.word);
     		m.put("word_zh", t.word_zh);
     		m.put("shrubId", t.shrubId);
@@ -53,5 +36,13 @@ public class Application extends Controller {
     	}
     	renderJSON(result);
     }
+
+    public static void list(String startLetter){
+        String startLetterLow = startLetter.toLowerCase();
+        String startLetterUp = startLetter.toUpperCase();
+        List<Term> results = Term.find("word like ? or word like ?", startLetterLow+"%", startLetterUp+"%").fetch();
+        render(startLetter, results);
+    }
+
 
 }
