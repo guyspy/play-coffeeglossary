@@ -9,6 +9,7 @@
 GET     /                                       Application.index
 GET     /shrub/glossary/term/{shrubId}/?		Application.term
 GET     /list/{startLetter}/?					Application.list
+GET     /category/{tag}/?                       Application.tag
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
