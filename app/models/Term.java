@@ -34,7 +34,7 @@ public class Term extends Model {
 
 
   public String toString(){
-    return "["+shrubId+"] "+word;
+    return "["+shrubId+"] "+word +" | " + word_zh;
   }
 
 
